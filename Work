@@ -1,0 +1,39 @@
+import re
+def cleanfile():
+    f = open('Замок.txt', 'r', encoding = 'utf - 8')
+    string = f.read()
+    f.close()
+    return string
+
+def work1(string):
+    newarray = re.findall('[^А-Я\. ] ([А-Я]\. [А-Я](?:[а-я])+).+?', string)
+    print('Первое задание' + '\n')
+    for word in newarray:
+        print(word)
+
+def work2(string):
+    print('\n' + 'Второе задание' + '\n')
+    newarray1 = re.findall('.*?([А-Я]\. [А-Я]\. [А-Я](?:[а-я])+)(?:\s|.|,|;)', string)
+    newarray2 = re.findall('.*?([А-Я](?:[а-я])+? [А-Я](?:[а-я])+)(?:\s|.|,|;)', string)
+    newarray3 = re.findall('.*?([А-Я](?:[а-я])+ [А-Я]\. [А-Я]\. )', string)
+    newarray4 = re.findall('[^А-Я\. ] ([А-Я]\. [А-Я](?:[а-я])+).+?', string)
+    for word4 in newarray4:
+        print(word4) 
+    for word1 in newarray1:
+        print(word1)
+    for word3 in newarray3:
+        print(word3)
+    for word2 in newarray2:
+        print(word2)
+    return newarray1, newarray2, newarray3, newarray4
+#def work3(string):
+    
+          
+
+def main():
+    a = cleanfile()
+    b = work1(a)
+    c = work2(a)
+#    d = work3(a)
+if __name__== '__main__':
+    main()
